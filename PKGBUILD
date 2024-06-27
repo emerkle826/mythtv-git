@@ -59,6 +59,7 @@ makedepends=(
     'python-future'
     'python-lxml'
     'python-mysqlclient'
+    'python-pip'
     'python-requests'
     'python-setuptools'
     'python-simplejson'
