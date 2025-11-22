@@ -44,7 +44,6 @@ pkgbase = mythtv-git
 	depends = libxrandr
 	depends = libzip
 	depends = lzo
-	depends = python-pyqt5-webengine
 	depends = python-requests-cache
 	depends = qt5-script
 	depends = soundtouch

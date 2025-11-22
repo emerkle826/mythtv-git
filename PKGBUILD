@@ -34,7 +34,6 @@ depends=(
     'libxrandr'
     'libzip'
     'lzo'
-    'python-pyqt5-webengine'
     'python-requests-cache'
     'qt5-script'
     'soundtouch'
