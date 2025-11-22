@@ -102,7 +102,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/mythtv/mythtv"
-  printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
