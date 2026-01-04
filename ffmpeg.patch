@@ -1,0 +1,13 @@
+--- src/mythtv/mythtv/configure.old	2025-06-06 15:55:18.478080998 -0500
++++ src/mythtv/mythtv/configure	2025-06-06 15:55:07.715528780 -0500
+@@ -6429,6 +6429,10 @@
+ --disable-doc \
+ --disable-nvenc \
+ --enable-shared \
++--enable-nvdec \
++--enable-vulkan \
++--enable-opengl \
++--enable-libglslang \
+ --disable-static \
+ --enable-gpl \
+ --enable-pic \

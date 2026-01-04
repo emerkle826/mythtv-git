@@ -8,7 +8,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=35.0.r44.g7e93f0d
+pkgver=35.0.r51.g805e05b
 pkgrel=1
 pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
 arch=('x86_64')
@@ -62,6 +62,7 @@ makedepends=(
     'python-setuptools'
     'python-simplejson'
     'yasm'
+    'vulkan-headers'
 )
 optdepends=(
     'glew: for GPU commercial flagging'
@@ -90,6 +91,7 @@ source=(
     'mythtv.png'
     '99-mythbackend.rules'
     'sysusers.d'
+    'ffmpeg.patch'
 )
 sha256sums=(
     'SKIP'
@@ -98,11 +100,16 @@ sha256sums=(
     '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
     'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
     '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+    '00f124909ebe28f358836d91e1449ee947bc3847343ac95f1946fc63f87a3e40'
 )
 
 pkgver() {
   cd "$srcdir/mythtv/mythtv"
   printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
+prepare() {
+  patch -Np1 < $srcdir/ffmpeg.patch || return 1
 }
 
 build() {
@@ -118,6 +125,10 @@ build() {
               --enable-libvpx \
               --enable-libx264 \
               --enable-libx265 \
+              --enable-nvdec \
+              --enable-vulkan \
+              --enable-libglslang \
+              --enable-opengles \
               --enable-vaapi \
               --with-bindings=python \
               --with-bindings=perl \
